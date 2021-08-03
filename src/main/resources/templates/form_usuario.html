@@ -16,7 +16,8 @@
         <div class="form-group row">
             <label for="inputNombre" class="col-sm-2 col-form-label">Nombre:</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="inputNombre" placeholder="Nombre" name="nombreUsuario">
+                <input type="text" class="form-control" id="inputNombre" placeholder="Nombre" name="nombreUsuario"
+                       th:value="${usuario.getNombreUsuario()}">
             </div>
 
             <div th:if="${error != null && (error.containsKey('nombreUsuario') || error.containsKey('inputNombre'))}"
@@ -28,7 +29,7 @@
             <label for="inputApellido" class="col-sm-2 col-form-label">Apellidos:</label>
             <div class="col-sm-10">
                 <input type="text" class="form-control" id="inputApellido" placeholder="Apellido"
-                       name="apellidoUsuario">
+                       name="apellidoUsuario" th:value="${usuario.getApellidoUsuario()}">
             </div>
 
             <div th:if="${error != null && (error.containsKey('apellidoUsuario') || error.containsKey('inputApellido'))}"
@@ -39,7 +40,8 @@
         <div class="form-group row">
             <label for="inputEmail3" class="col-sm-2 col-form-label">Correo:</label>
             <div class="col-sm-10">
-                <input type="email" class="form-control" id="inputEmail3" placeholder="Correo" name="correoUsuario">
+                <input type="email" class="form-control" id="inputEmail3" placeholder="Correo" name="correoUsuario"
+                       th:value="${usuario.getCorreoUsuario()}">
             </div>
 
             <div th:if="${error != null && (error.containsKey('inputEmail3') || error.containsKey('correoUsuario'))}"
@@ -51,7 +53,7 @@
             <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
             <div class="col-sm-10">
                 <input type="password" class="form-control" id="inputPassword3" placeholder="Password"
-                       name="contrasenia">
+                       name="contrasenia" th:value="${usuario.getContrasenia()}">
             </div>
 
             <div th:if="${error != null && (error.containsKey('inputPassword3') || error.containsKey('contrasenia'))}"

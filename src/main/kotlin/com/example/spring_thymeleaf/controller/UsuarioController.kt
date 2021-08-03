@@ -11,8 +11,9 @@ import javax.validation.Valid
 @Controller
 class UsuarioController {
 
-    @GetMapping("/registro")
+    @GetMapping("", "/", "/registro")
     fun formularioUsuario(vista: Model): String {
+        vista.addAttribute("usuario", Usuario())
         return "form_usuario"
     }
 
