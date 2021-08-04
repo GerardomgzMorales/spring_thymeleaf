@@ -22,11 +22,18 @@ class UsuarioController {
         //El BindingResult toma las validaciones realizadas y aplicadas en el formulario
 
         if (resultado.hasErrors()) {
-            val mapaError: MutableMap<String, String> = hashMapOf()
+            /*val mapaError: MutableMap<String, String> = hashMapOf()
             resultado.fieldErrors.forEach { error ->
                 mapaError[error.field] = "El campo ${error.field} ${error.defaultMessage}"
             }
             vista.addAttribute("error", mapaError)
+            //se comneta este codigfo con el fin de realizar esta validacion de error desde
+            // la parte del formulario html llamado form_usuario
+            */
+
+
+
+
             return "form_usuario"
         }
 
