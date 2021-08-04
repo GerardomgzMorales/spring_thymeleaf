@@ -12,15 +12,15 @@
 
 
 <div class="col-sm-10">
-    <form th:action="@{/proceso}" method="post">
+    <form th:action="@{/proceso}" th:object="${usuario}" method="post">
         <div class="form-group row">
             <label for="inputNombre" class="col-sm-2 col-form-label">Nombre:</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="inputNombre" placeholder="Nombre" name="nombreUsuario"
-                       th:value="${usuario.getNombreUsuario()}">
+                <input type="text" class="form-control" id="inputNombre" placeholder="Nombre"
+                       th:value="${usuario.getNombreUsuario()}" th:field="*{nombreUsuario}">
             </div>
 
-            <div th:if="${error != null && (error.containsKey('nombreUsuario') || error.containsKey('inputNombre'))}"
+            <div th:if="${error != null && error.containsKey('nombreUsuario')}"
                  th:utext="${error.get('nombreUsuario')}"></div>
 
         </div>
@@ -29,10 +29,10 @@
             <label for="inputApellido" class="col-sm-2 col-form-label">Apellidos:</label>
             <div class="col-sm-10">
                 <input type="text" class="form-control" id="inputApellido" placeholder="Apellido"
-                       name="apellidoUsuario" th:value="${usuario.getApellidoUsuario()}">
+                       th:value="${usuario.getApellidoUsuario()}" th:field="*{apellidoUsuario}">
             </div>
 
-            <div th:if="${error != null && (error.containsKey('apellidoUsuario') || error.containsKey('inputApellido'))}"
+            <div th:if="${error != null && error.containsKey('apellidoUsuario') }"
                  th:utext="${error.get('apellidoUsuario')}"></div>
 
         </div>
@@ -40,11 +40,11 @@
         <div class="form-group row">
             <label for="inputEmail3" class="col-sm-2 col-form-label">Correo:</label>
             <div class="col-sm-10">
-                <input type="email" class="form-control" id="inputEmail3" placeholder="Correo" name="correoUsuario"
-                       th:value="${usuario.getCorreoUsuario()}">
+                <input type="email" class="form-control" id="inputEmail3" placeholder="Correo"
+                       th:value="${usuario.getCorreoUsuario()}" th:field="*{correoUsuario}">
             </div>
 
-            <div th:if="${error != null && (error.containsKey('inputEmail3') || error.containsKey('correoUsuario'))}"
+            <div th:if="${error != null && error.containsKey('correoUsuario')}"
                  th:utext="${error.get('correoUsuario')}"></div>
 
         </div>
@@ -53,10 +53,10 @@
             <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
             <div class="col-sm-10">
                 <input type="password" class="form-control" id="inputPassword3" placeholder="Password"
-                       name="contrasenia" th:value="${usuario.getContrasenia()}">
+                       th:field="*{contrasenia}">
             </div>
 
-            <div th:if="${error != null && (error.containsKey('inputPassword3') || error.containsKey('contrasenia'))}"
+            <div th:if="${error != null && error.containsKey('contrasenia')}"
                  th:utext="${error.get('contrasenia')}"></div>
 
         </div>
