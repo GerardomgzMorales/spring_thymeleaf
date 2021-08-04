@@ -17,7 +17,7 @@
             <label for="inputNombre" class="col-sm-2 col-form-label">Nombre:</label>
             <div class="col-sm-10">
                 <input type="text" class="form-control" id="inputNombre" placeholder="Nombre"
-                       th:value="${usuario.getNombreUsuario()}" th:field="*{nombreUsuario}">
+                       th:value="*{getNombreUsuario()}" th:field="*{nombreUsuario}">
                 <!--th:field="*{nombreUsuario}" se utiliza el * para tomar la propiedad de un objeto mapeado desde el formulario th:object="${usuario}" -->
             </div>
 
@@ -30,7 +30,7 @@
             <label for="inputApellido" class="col-sm-2 col-form-label">Apellidos:</label>
             <div class="col-sm-10">
                 <input type="text" class="form-control" id="inputApellido" placeholder="Apellido"
-                       th:value="${usuario.getApellidoUsuario()}" th:field="*{apellidoUsuario}">
+                       th:value="*{getApellidoUsuario()}" th:field="*{apellidoUsuario}">
             </div>
 
             <div th:if="${#fields.hasErrors('apellidoUsuario') }" th:errors="*{apellidoUsuario}"></div>
@@ -41,12 +41,23 @@
             <label for="inputEmail3" class="col-sm-2 col-form-label">Correo:</label>
             <div class="col-sm-10">
                 <input type="email" class="form-control" id="inputEmail3" placeholder="Correo"
-                       th:value="${usuario.getCorreoUsuario()}" th:field="*{correoUsuario}">
+                       th:value="*{getCorreoUsuario()}" th:field="*{correoUsuario}">
             </div>
 
             <div th:if="${#fields.hasErrors('correoUsuario')}" th:errors="*{correoUsuario}"></div>
-
         </div>
+
+
+        <div class="form-group row">
+            <label for="inpurEdad" class="col-sm-2 col-form-label">Edad Usuario:</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="inpurEdad" placeholder="Edad"
+                       th:value="*{getEdad()}" th:field="*{edad}">
+            </div>
+
+            <div th:if="${#fields.hasErrors('edad')}" th:errors="*{edad}"></div>
+        </div>
+
 
         <div class="form-group row">
             <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
