@@ -1,28 +1,31 @@
 package com.example.spring_thymeleaf.model
 
-import org.springframework.stereotype.Component
+import javax.validation.constraints.Email
 import javax.validation.constraints.NotEmpty
 import javax.validation.constraints.NotNull
+import javax.validation.constraints.Size
 
-@Component
+
 class Usuario {
 
-    final var id: Long? = null
+    var id: Long? = null
 
     @NotEmpty
-    final var nombreUsuario: String? = null
+    var nombreUsuario: String? = null
 
     @NotEmpty
-    final var apellidoUsuario: String? = null
+    var apellidoUsuario: String? = null
 
     @NotEmpty
-    final var correoUsuario: String? = null
+    @Email
+    var correoUsuario: String? = null
 
     @NotEmpty
-    final var contrasenia: String? = null
+    @Size(min = 3, max = 12)
+    var contrasenia: String? = null
 
     @NotNull
-    final var edad: Int? = null
+    var edad: Int? = null
 
     constructor()
 
