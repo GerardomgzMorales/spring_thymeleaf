@@ -25,10 +25,9 @@ class UsuarioController {
         // Se agrega esta funcion ya que podemos automatizar la validacion que hace el formulario
         //gracias a la anotacion @Valid desde la funcion procesoFormUsuario
 
-
         // webBinder.validator = validador  //al realizar este tipo de validacion solo se considera la validacion creada desde la clase validacion
 
-        webBinder.addValidators(validador) // al realizar este tipo de validacion se contempla la validacion de todos los metodos ya sea por anotaciones o por las clases de validacion 
+        webBinder.addValidators(validador) // al realizar este tipo de validacion se contempla la validacion de todos los metodos ya sea por anotaciones o por las clases de validacion
     }
 
     // @SessionAttributes("usuario") se guarda en una sesion y se mantiene Vivos entre sesiones
