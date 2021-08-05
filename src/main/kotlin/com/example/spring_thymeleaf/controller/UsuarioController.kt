@@ -5,7 +5,9 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.validation.BindingResult
+import org.springframework.web.bind.WebDataBinder
 import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.InitBinder
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.SessionAttributes
 import org.springframework.web.bind.support.SessionStatus
@@ -17,6 +19,17 @@ class UsuarioController {
 
     @Autowired
     val validador: Validador? = null
+
+    @InitBinder
+    fun inicializador(webBinder: WebDataBinder) {
+        // Se agrega esta funcion ya que podemos automatizar la validacion que hace el formulario
+        //gracias a la anotacion @Valid desde la funcion procesoFormUsuario
+
+
+        // webBinder.validator = validador  //al realizar este tipo de validacion solo se considera la validacion creada desde la clase validacion
+
+        webBinder.addValidators(validador) // al realizar este tipo de validacion se contempla la validacion de todos los metodos ya sea por anotaciones o por las clases de validacion 
+    }
 
     // @SessionAttributes("usuario") se guarda en una sesion y se mantiene Vivos entre sesiones
 
@@ -39,9 +52,10 @@ class UsuarioController {
         status: SessionStatus
     ): String {
 
-        validador?.validate(usuario, resultado)
-        //El BindingResult toma las validaciones realizadas y aplicadas en el formulario
+        //validador?.validate(usuario, resultado)  // Esta linea pasa el objeto usuario y resultado para que sena validadas en la clase validacion
 
+
+        //El BindingResult toma las validaciones realizadas y aplicadas en el formulario
         if (resultado.hasErrors()) {
             /*val mapaError: MutableMap<String, String> = hashMapOf()
             resultado.fieldErrors.forEach { error ->
