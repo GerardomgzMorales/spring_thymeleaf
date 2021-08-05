@@ -1,5 +1,6 @@
 package com.example.spring_thymeleaf.model
 
+import com.example.spring_thymeleaf.anotacion_valid.IndexRegex
 import javax.validation.constraints.*
 
 
@@ -7,6 +8,7 @@ class Usuario {
 
     //@NotEmpty
    // @Pattern()
+    @IndexRegex
     var id: String? = null
 
     //@NotEmpty
