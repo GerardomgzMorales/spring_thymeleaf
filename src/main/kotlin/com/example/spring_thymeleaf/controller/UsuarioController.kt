@@ -1,6 +1,7 @@
 package com.example.spring_thymeleaf.controller
 
 import com.example.spring_thymeleaf.model.Usuario
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.validation.BindingResult
@@ -14,14 +15,18 @@ import javax.validation.Valid
 @SessionAttributes("usuario")
 class UsuarioController {
 
+    @Autowired
+    val validador: Validador? = null
+
     // @SessionAttributes("usuario") se guarda en una sesion y se mantiene Vivos entre sesiones
 
     @GetMapping("", "/", "/registro")
     fun formularioUsuario(vista: Model): String {
         val usuario = Usuario()
-        usuario.nombreUsuario = "Israel Morales ññÑíáóú"
+        usuario.nombreUsuario = "Israel"
+        usuario.apellidoUsuario = "Morales ññÑíáóú"
         usuario.edad = 22
-        usuario.id = 233_323_349
+        usuario.id = "22.222.985-ñ"
         vista.addAttribute("usuario", usuario)
         return "form_usuario"
     }
@@ -33,6 +38,8 @@ class UsuarioController {
         vista: Model,
         status: SessionStatus
     ): String {
+
+        validador?.validate(usuario, resultado)
         //El BindingResult toma las validaciones realizadas y aplicadas en el formulario
 
         if (resultado.hasErrors()) {

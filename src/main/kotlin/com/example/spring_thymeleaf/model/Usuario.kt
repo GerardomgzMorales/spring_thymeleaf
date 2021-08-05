@@ -1,16 +1,15 @@
 package com.example.spring_thymeleaf.model
 
-import javax.validation.constraints.Email
-import javax.validation.constraints.NotEmpty
-import javax.validation.constraints.NotNull
-import javax.validation.constraints.Size
+import javax.validation.constraints.*
 
 
 class Usuario {
 
-    var id: Long? = null
+    //@NotEmpty
+   // @Pattern()
+    var id: String? = null
 
-    @NotEmpty
+    //@NotEmpty
     var nombreUsuario: String? = null
 
     @NotEmpty
