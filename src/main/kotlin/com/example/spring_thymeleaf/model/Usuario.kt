@@ -1,20 +1,21 @@
 package com.example.spring_thymeleaf.model
 
 import com.example.spring_thymeleaf.anotacion_valid.IndexRegex
+import com.example.spring_thymeleaf.validador2.IRequeridoValid
 import javax.validation.constraints.*
 
 
 class Usuario {
 
     //@NotEmpty
-   // @Pattern()
+    // @Pattern()
     @IndexRegex
     var id: String? = null
 
     //@NotEmpty
     var nombreUsuario: String? = null
 
-    @NotEmpty
+    @IRequeridoValid
     var apellidoUsuario: String? = null
 
     @NotEmpty
