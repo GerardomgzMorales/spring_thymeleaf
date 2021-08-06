@@ -3,6 +3,8 @@ package com.example.spring_thymeleaf.model
 import com.example.spring_thymeleaf.anotacion_valid.IndexRegex
 import com.example.spring_thymeleaf.correo_valid.ValidEmail
 import com.example.spring_thymeleaf.validador2.IRequeridoValid
+import org.springframework.format.annotation.DateTimeFormat
+import java.util.*
 import javax.validation.constraints.*
 
 
@@ -30,6 +32,10 @@ class Usuario {
 
     @NotNull
     var edad: Int? = null
+
+    @NotNull
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    var fechaNacimientoo: Date? = null
 
     constructor()
 

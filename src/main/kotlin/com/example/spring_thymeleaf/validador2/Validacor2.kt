@@ -7,8 +7,6 @@ import javax.validation.ConstraintValidatorContext
 class Validacor2 : ConstraintValidator<IRequeridoValid?, String?> {
 
     override fun isValid(s: String?, constraintValidatorContext: ConstraintValidatorContext): Boolean {
-        return if (s == null || !StringUtils.hasText(s)) {
-            false
-        } else false
+        return !(s == null || !StringUtils.hasText(s))
     }
 }
