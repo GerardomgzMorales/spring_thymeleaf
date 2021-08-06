@@ -1,6 +1,7 @@
 package com.example.spring_thymeleaf.model
 
 import com.example.spring_thymeleaf.anotacion_valid.IndexRegex
+import com.example.spring_thymeleaf.correo_valid.ValidEmail
 import com.example.spring_thymeleaf.validador2.IRequeridoValid
 import javax.validation.constraints.*
 
@@ -19,7 +20,8 @@ class Usuario {
     var apellidoUsuario: String? = null
 
     @NotEmpty
-    @Email
+    // @Email
+    @ValidEmail
     var correoUsuario: String? = null
 
     @NotEmpty

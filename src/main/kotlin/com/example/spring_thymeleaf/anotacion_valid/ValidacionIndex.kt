@@ -7,7 +7,8 @@ class ValidacionIndex : ConstraintValidator<IndexRegex, String> {
 
     override fun isValid(p0: String?, p1: ConstraintValidatorContext?): Boolean {
         //true bien false mal
-        if (p0?.matches(Regex("[\\d]{2}[.][\\d]{3}[.][0-9]{3}[-][a-zñA-ZÑ]")) == true) {
+        val cadena2 = "[\\d]{2}[.][\\d]{3}[.][0-9]{3}[-][a-zñA-ZÑ]"
+        if (p0?.matches(Regex(cadena2)) == true) {
             return true
         }
         return false
