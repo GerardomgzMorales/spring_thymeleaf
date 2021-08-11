@@ -34,7 +34,9 @@ class Usuario {
     var edad: Int? = null
 
     @NotNull
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    //@Past  // fehcas en el pasado
+   // @Future // fechas en el futuro
+   // @DateTimeFormat(pattern = "yyyy-MM-dd")
     var fechaNacimientoo: Date? = null
 
     constructor()

@@ -1,7 +1,9 @@
 package com.example.spring_thymeleaf.controller
 
 import com.example.spring_thymeleaf.model.Usuario
+import com.example.spring_thymeleaf.validation.MayusKey
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.beans.propertyeditors.CustomDateEditor
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.validation.BindingResult
@@ -11,11 +13,14 @@ import org.springframework.web.bind.annotation.InitBinder
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.SessionAttributes
 import org.springframework.web.bind.support.SessionStatus
+import java.text.SimpleDateFormat
+import java.util.*
 import javax.validation.Valid
 
 @Controller
 @SessionAttributes("usuario")
 class UsuarioController {
+    // @SessionAttributes("usuario") se guarda en una sesion y se mantiene Vivos entre sesiones
 
     @Autowired
     val validador: Validador? = null
@@ -28,9 +33,20 @@ class UsuarioController {
         // webBinder.validator = validador  //al realizar este tipo de validacion solo se considera la validacion creada desde la clase validacion
 
         webBinder.addValidators(validador) // al realizar este tipo de validacion se contempla la validacion de todos los metodos ya sea por anotaciones o por las clases de validacion
+
+        val formatoFecha = SimpleDateFormat("yyyy-MM-dd")
+        formatoFecha.isLenient = false //false si el analizador de patron No es estricto y true si debe ser estricto
+        webBinder.registerCustomEditor(Date::class.java, CustomDateEditor(formatoFecha, false))
+
+
+        webBinder.registerCustomEditor(String::class.java,"nombreUsuario", MayusKey())  /*Este funcion toma todo los string y los combierte a mayusculas es parte de la validador de campos y se esta
+        registrando este validado en el formulario*/
+
+        webBinder.registerCustomEditor(String::class.java,"apellidoUsuario", MayusKey())  /*Este funcion toma todo los string y los combierte a mayusculas es parte de la validador de campos y se esta
+        registrando este validado en el formulario.
+        los parametros de esta funcion son 1) el tipo de dato a validad, 2) es el nombre del campo del formulario que se debe validar y 3) es la clase que hace la validacion*/
     }
 
-    // @SessionAttributes("usuario") se guarda en una sesion y se mantiene Vivos entre sesiones
 
     @GetMapping("", "/", "/registro")
     fun formularioUsuario(vista: Model): String {
@@ -50,9 +66,7 @@ class UsuarioController {
         vista: Model,
         status: SessionStatus
     ): String {
-
         //validador?.validate(usuario, resultado)  // Esta linea pasa el objeto usuario y resultado para que sena validadas en la clase validacion
-
 
         //El BindingResult toma las validaciones realizadas y aplicadas en el formulario
         if (resultado.hasErrors()) {
@@ -66,7 +80,6 @@ class UsuarioController {
             */
             return "form_usuario"
         }
-
         vista.addAttribute("usuario", usuario)
         vista.addAttribute("titulo", "Resultado de la informcion")
         status.setComplete() //Se elimina la seccion levantada en para esta peticion
