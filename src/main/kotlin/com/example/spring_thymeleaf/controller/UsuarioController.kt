@@ -2,8 +2,10 @@ package com.example.spring_thymeleaf.controller
 
 import com.example.spring_thymeleaf.model.Pais
 import com.example.spring_thymeleaf.model.Usuario
+import com.example.spring_thymeleaf.service.IListaPaises
 import com.example.spring_thymeleaf.validation.MayusKey
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.beans.factory.annotation.Qualifier
 import org.springframework.beans.propertyeditors.CustomDateEditor
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
@@ -22,6 +24,10 @@ class UsuarioController {
 
     @Autowired
     val validador: Validador? = null
+
+    @Autowired
+    @Qualifier("paiseImplService")
+    val servicePais: IListaPaises? = null
 
     @InitBinder
     fun inicializador(webBinder: WebDataBinder) {
@@ -105,13 +111,16 @@ class UsuarioController {
     }
 
     @ModelAttribute("paisesObj")
-    fun listaObjPais(): List<Pais> {
-        return listOf(
-            Pais(1, "MX", "México"),
-            Pais(2, "USA", "Estados Unidos"),
-            Pais(3, "CA", "Canada"),
-            Pais(4, "CH", "China")
-        )
-    }
+    fun listaObjPais(): List<Pais>? {
 
+        /* fun listaObjPais(): List<Pais> {
+             return listOf(
+                 Pais(1, "MX", "México"),
+                 Pais(2, "USA", "Estados Unidos"),
+                 Pais(3, "CA", "Canada"),
+                 Pais(4, "CH", "China")
+             )
+         }*/
+        return this.servicePais?.let { it.listarPaises() }
+    }
 }
