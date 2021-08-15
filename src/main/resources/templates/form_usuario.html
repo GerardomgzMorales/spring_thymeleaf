@@ -36,13 +36,13 @@
             <label for="selectPais" class="col-sm-2 col-form-label">Pais</label>
 
             <div class="col-sm-10">
-                <select id="selectPais" th:field="*{pais.codigo}">
+                <select id="selectPais" th:field="*{pais}">
                     <option value="">-- SELECT OPTION --</option>
-                    <option th:each="contry: ${paisesObj}" th:utext="${contry.nombre}" th:value="${contry.codigo}"></option>
+                    <option th:each="contry: ${paisesObj}" th:utext="${contry.getNombre()}" th:value="${contry.id}"></option>
                 </select>
             </div>
 
-            <div th:if="${#fields.hasErrors('pais.codigo') }" th:errors="*{pais.codigo}"></div>
+            <div th:if="${#fields.hasErrors('pais') }" th:errors="*{pais}"></div>
         </div>
 
 

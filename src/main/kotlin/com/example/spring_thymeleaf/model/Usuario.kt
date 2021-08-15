@@ -38,7 +38,8 @@ class Usuario() {
     // @DateTimeFormat(pattern = "yyyy-MM-dd")
     var fechaNacimientoo: Date? = null
 
-    var pais:Pais = Pais()
+    @NotNull
+    var pais: Pais? = null
     //var pais: String? = null
 
 }

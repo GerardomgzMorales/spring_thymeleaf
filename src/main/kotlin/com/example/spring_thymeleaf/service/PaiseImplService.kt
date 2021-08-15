@@ -8,7 +8,7 @@ class PaiseImplService : IListaPaises {
 
     private var listaPaises: List<Pais>? = null
 
-    init {
+    constructor() {
         this.listaPaises = listOf(
             Pais(1, "MX", "México"),
             Pais(2, "USA", "Estados Unidos"),

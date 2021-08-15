@@ -3,6 +3,7 @@ package com.example.spring_thymeleaf.controller
 import com.example.spring_thymeleaf.model.Pais
 import com.example.spring_thymeleaf.model.Usuario
 import com.example.spring_thymeleaf.service.IListaPaises
+import com.example.spring_thymeleaf.service.PaiseEditorPropertie
 import com.example.spring_thymeleaf.validation.MayusKey
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Qualifier
@@ -29,6 +30,10 @@ class UsuarioController {
     @Qualifier("paiseImplService")
     val servicePais: IListaPaises? = null
 
+    @Autowired
+    @Qualifier("paiseEditorPropertie")
+    var propertiesPais: PaiseEditorPropertie? = null
+
     @InitBinder
     fun inicializador(webBinder: WebDataBinder) {
         // Se agrega esta funcion ya que podemos automatizar la validacion que hace el formulario
@@ -50,6 +55,8 @@ class UsuarioController {
         registrando este validado en el formulario.
         los parametros de esta funcion son 1) el tipo de dato a validad, 2) es el nombre del campo del formulario que se debe validar y 3) es la clase que hace la validacion*/
         webBinder.registerCustomEditor(String::class.java, "id", MayusKey())
+
+        propertiesPais?.let { webBinder.registerCustomEditor(Pais::class.java, "pais", it) }
     }
 
 
