@@ -121,6 +121,6 @@ class UsuarioController {
                  Pais(4, "CH", "China")
              )
          }*/
-        return this.servicePais?.let { it.listarPaises() }
+        return this.servicePais?.listarPaises()
     }
 }
