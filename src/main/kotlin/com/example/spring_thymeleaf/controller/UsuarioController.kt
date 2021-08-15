@@ -1,5 +1,6 @@
 package com.example.spring_thymeleaf.controller
 
+import com.example.spring_thymeleaf.model.Pais
 import com.example.spring_thymeleaf.model.Usuario
 import com.example.spring_thymeleaf.validation.MayusKey
 import org.springframework.beans.factory.annotation.Autowired
@@ -100,6 +101,16 @@ class UsuarioController {
             "Qatar",
             "Somalia",
             "Paraguay"
+        )
+    }
+
+    @ModelAttribute("paisesObj")
+    fun listaObjPais(): List<Pais> {
+        return listOf(
+            Pais(1, "MX", "México"),
+            Pais(2, "USA", "Estados Unidos"),
+            Pais(3, "CA", "Canada"),
+            Pais(4, "CH", "China")
         )
     }
 
