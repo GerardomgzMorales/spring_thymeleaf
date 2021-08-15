@@ -15,8 +15,8 @@
     <li th:utext="*{getCorreoUsuario()}"></li>
     <li th:utext="*{getEdad()}"></li>
     <li th:utext="*{getId()}"></li>
-    <li th:utext="*{getFechaNacimientoo()}"></li>
     <li th:utext="*{getPais()}"></li>
+    <li th:utext="*{#dates.format(getFechaNacimientoo(),'dd/MM/yyyy')}"></li>
 
 </ul>
 
