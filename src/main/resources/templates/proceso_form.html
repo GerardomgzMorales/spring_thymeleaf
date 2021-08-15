@@ -6,16 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body>
+<body th:object="${usuario}">
 
 <ul>
-    <li th:utext="${usuario.getNombreUsuario()}"></li>
-    <li th:utext="${usuario.getApellidoUsuario()}"></li>
-    <li th:utext="${usuario.getContrasenia()}"></li>
-    <li th:utext="${usuario.getCorreoUsuario()}"></li>
-    <li th:utext="${usuario.getEdad()}"></li>
-    <li th:utext="${usuario.getId()}"></li>
-    <li th:utext="${usuario.getFechaNacimientoo()}"></li>
+    <li th:utext="*{getNombreUsuario()}"></li>
+    <li th:utext="*{getApellidoUsuario()}"></li>
+    <li th:utext="*{getContrasenia()}"></li>
+    <li th:utext="*{getCorreoUsuario()}"></li>
+    <li th:utext="*{getEdad()}"></li>
+    <li th:utext="*{getId()}"></li>
+    <li th:utext="*{getFechaNacimientoo()}"></li>
+    <li th:utext="*{getPais()}"></li>
+
 </ul>
 
 </body>

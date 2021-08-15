@@ -8,10 +8,7 @@ import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.validation.BindingResult
 import org.springframework.web.bind.WebDataBinder
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.InitBinder
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.SessionAttributes
+import org.springframework.web.bind.annotation.*
 import org.springframework.web.bind.support.SessionStatus
 import java.text.SimpleDateFormat
 import java.util.*
@@ -39,12 +36,13 @@ class UsuarioController {
         webBinder.registerCustomEditor(Date::class.java, CustomDateEditor(formatoFecha, false))
 
 
-        webBinder.registerCustomEditor(String::class.java,"nombreUsuario", MayusKey())  /*Este funcion toma todo los string y los combierte a mayusculas es parte de la validador de campos y se esta
+        webBinder.registerCustomEditor(String::class.java, "nombreUsuario", MayusKey())  /*Este funcion toma todo los string y los combierte a mayusculas es parte de la validador de campos y se esta
         registrando este validado en el formulario*/
 
-        webBinder.registerCustomEditor(String::class.java,"apellidoUsuario", MayusKey())  /*Este funcion toma todo los string y los combierte a mayusculas es parte de la validador de campos y se esta
+        webBinder.registerCustomEditor(String::class.java, "apellidoUsuario", MayusKey())  /*Este funcion toma todo los string y los combierte a mayusculas es parte de la validador de campos y se esta
         registrando este validado en el formulario.
         los parametros de esta funcion son 1) el tipo de dato a validad, 2) es el nombre del campo del formulario que se debe validar y 3) es la clase que hace la validacion*/
+        webBinder.registerCustomEditor(String::class.java, "id", MayusKey())
     }
 
 
@@ -85,6 +83,24 @@ class UsuarioController {
         status.setComplete() //Se elimina la seccion levantada en para esta peticion
         //la session levantada es @SessionAttributes("usuario") creada desde la clase controller
         return "proceso_form"
+    }
+
+    @ModelAttribute("lista_pais")
+    fun listaPaises(): List<String> {
+        return listOf(
+            "México",
+            "USA",
+            "Canada",
+            "España",
+            "Perú",
+            "Argentina",
+            "Uruguay",
+            "China",
+            "Palestina",
+            "Qatar",
+            "Somalia",
+            "Paraguay"
+        )
     }
 
 }

@@ -3,12 +3,11 @@ package com.example.spring_thymeleaf.model
 import com.example.spring_thymeleaf.anotacion_valid.IndexRegex
 import com.example.spring_thymeleaf.correo_valid.ValidEmail
 import com.example.spring_thymeleaf.validador2.IRequeridoValid
-import org.springframework.format.annotation.DateTimeFormat
 import java.util.*
 import javax.validation.constraints.*
 
 
-class Usuario {
+class Usuario() {
 
     //@NotEmpty
     // @Pattern()
@@ -35,23 +34,12 @@ class Usuario {
 
     @NotNull
     //@Past  // fehcas en el pasado
-   // @Future // fechas en el futuro
-   // @DateTimeFormat(pattern = "yyyy-MM-dd")
+    // @Future // fechas en el futuro
+    // @DateTimeFormat(pattern = "yyyy-MM-dd")
     var fechaNacimientoo: Date? = null
 
-    constructor()
+    @NotNull
+    @NotEmpty
+    var pais: String? = null
 
-    constructor(
-        nombreUsuario: String?,
-        apellidoUsuario: String?,
-        correoUsuario: String?,
-        contrasenia: String?,
-        edad: Int?
-    ) {
-        this.nombreUsuario = nombreUsuario
-        this.apellidoUsuario = apellidoUsuario
-        this.correoUsuario = correoUsuario
-        this.contrasenia = contrasenia
-        this.edad = edad
-    }
 }
