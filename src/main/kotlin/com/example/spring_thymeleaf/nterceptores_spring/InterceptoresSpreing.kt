@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse
 import kotlin.math.log
 import kotlin.random.Random
 
-@Component
+@Component("interceptorSpring")
 class InterceptoresSpreing : HandlerInterceptor {
 
     private val logger: Logger? = LoggerFactory.getLogger(InterceptoresSpreing::class.java)
@@ -43,6 +43,6 @@ class InterceptoresSpreing : HandlerInterceptor {
         logger?.info("\nTiempo transcurrido: $tiempoTranscurrido milisegundos")
         logger?.info("\n Tiempo Transcurrido Interruptor posHandle saliendo...\n")
 
-        super.postHandle(request, response, handler, modelAndView)
+
     }
 }
