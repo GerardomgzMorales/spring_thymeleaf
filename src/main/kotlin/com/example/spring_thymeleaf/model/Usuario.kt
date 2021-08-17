@@ -7,7 +7,7 @@ import java.util.*
 import javax.validation.constraints.*
 
 
-class Usuario() {
+class Usuario {
 
     //@NotEmpty
     // @Pattern()
@@ -41,5 +41,8 @@ class Usuario() {
     @NotNull
     var pais: Pais? = null
     //var pais: String? = null
+
+    @NotEmpty
+    var roles: List<String>? = null
 
 }

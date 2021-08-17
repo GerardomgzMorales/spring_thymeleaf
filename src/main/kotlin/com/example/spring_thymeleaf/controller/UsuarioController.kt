@@ -130,4 +130,9 @@ class UsuarioController {
          }*/
         return this.servicePais?.listarPaises()
     }
+
+    @ModelAttribute("lista_roles")
+    fun listaRoles(): List<String> {
+        return listOf("Administrador", "Usuario", "Alumno", "Profesor")
+    }
 }

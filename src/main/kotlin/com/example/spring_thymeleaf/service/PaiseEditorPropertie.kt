@@ -14,9 +14,9 @@ class PaiseEditorPropertie : PropertyEditorSupport() {
 
     override fun setAsText(text: String?) {
         if (text.isNullOrEmpty()) {
-            this.value = this.paisServiceLista?.buscarPorID(0)
+            this.value = null
         } else {
-            this.value = text?.toInt()?.let { this.paisServiceLista?.buscarPorID(it) }
+            this.value = text.toInt().let { this.paisServiceLista?.buscarPorID(it) }
         }
     }
 }

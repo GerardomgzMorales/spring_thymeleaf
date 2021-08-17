@@ -21,6 +21,10 @@
     <li th:utext="*{#dates.format(getFechaNacimientoo(),'dd/MM/yyyy')}"></li>
 
 </ul>
+<label>Roles</label>
+<ul>
+    <li th:each="rol :*{roles}" th:utext="${rol}"></li>
+</ul>
 
 </body>
 </html>
