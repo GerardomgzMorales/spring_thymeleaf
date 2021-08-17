@@ -107,7 +107,7 @@ class UsuarioController {
         status: SessionStatus
     ): String {
 
-        //Este metodo ayuda a que la vista de procesamiento no se a u Post y no se este enviando la informacion cada que se refresca la pagina de vista informacion 
+        //Este metodo ayuda a que la vista de procesamiento no se a u Post y no se este enviando la informacion cada que se refresca la pagina de vista informacion
 
         vista.addAttribute("titulo", "Resultado de la informcion")
 
