@@ -94,8 +94,28 @@ class UsuarioController {
         }
         vista.addAttribute("usuario", usuario)
         vista.addAttribute("titulo", "Resultado de la informcion")
-        status.setComplete() //Se elimina la seccion levantada en para esta peticion
+        //status.setComplete() //Se elimina la seccion levantada en para esta peticion
         //la session levantada es @SessionAttributes("usuario") creada desde la clase controller
+        //return "proceso_form" se comneta para que se reenvie el form
+        return "redirect:/vista_info"
+    }
+
+    @GetMapping("/vista_info")
+    fun vistaInformacionForm(
+        @SessionAttribute("usuario", required = false) usuario: Usuario?,
+        vista: Model,
+        status: SessionStatus
+    ): String {
+
+        //Este metodo ayuda a que la vista de procesamiento no se a u Post y no se este enviando la informacion cada que se refresca la pagina de vista informacion 
+
+        vista.addAttribute("titulo", "Resultado de la informcion")
+
+        if (usuario == null) {
+            return "redirect:/registro"
+        }
+
+        status.setComplete()
         return "proceso_form"
     }
 
